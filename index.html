@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claripele | Teste de cuidados com a pele e guia de acne</title>
+<meta name="description" content="Responde a 6 perguntas rápidas e descobre que informações podem ajudar-te a compreender melhor a tua pele e a organizar os teus cuidados. Guia Claripele por 1.999 Kz.">
+<meta name="theme-color" content="#214D3A">
+<style>
+  :root {
+    --forest: #214D3A;
+    --forest-dark: #173628;
+    --sage: #9CAF96;
+    --sage-dark: #5E7A5A;
+    --mint: #E8EFE5;
+    --ivory: #FAF8F2;
+    --white: #FFFFFF;
+    --ink: #252B27;
+    --muted: #5C655E;
+    --line: #DCE4D8;
+    --focus: #C9A227;
+    --radius: 18px;
+    --shadow: 0 10px 30px rgba(33, 77, 58, 0.08);
+    --shadow-hover: 0 14px 36px rgba(33, 77, 58, 0.14);
+    --wa: #1E8E4E;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--ivory); color: var(--ink); line-height: 1.6; font-size: 1rem; overflow-x: hidden;
+  }
+  img, svg { display: block; max-width: 100%; }
+  a { color: var(--forest); }
+  button { font: inherit; cursor: pointer; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 6px; }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+  .skip-link {
+    position: absolute; left: 12px; top: -60px; background: var(--white); padding: 8px 12px; z-index: 100;
+    border-radius: 8px; transition: top .2s ease;
+  }
+  .skip-link:focus { top: 8px; }
+  .container { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 56px 0; }
+  h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; color: var(--forest); line-height: 1.2; font-weight: 600; }
+  h1 { font-size: clamp(1.9rem, 6vw, 3.1rem); margin-bottom: 18px; }
+  h2 { font-size: clamp(1.5rem, 4.5vw, 2.25rem); margin-bottom: 14px; }
+  h3 { font-size: 1.2rem; margin-bottom: 8px; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 54px; padding: 14px 26px; border-radius: 999px; border: 2px solid transparent;
+    font-weight: 700; font-size: 1rem; text-decoration: none; text-align: center;
+    transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease, color .2s ease; max-width: 100%;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:active { transform: translateY(0); }
+  .btn-primary { background: var(--forest); color: var(--white); box-shadow: 0 8px 20px rgba(33,77,58,.25); }
+  .btn-primary:hover { background: var(--forest-dark); box-shadow: var(--shadow-hover); }
+  .btn-outline { background: transparent; color: var(--forest); border-color: var(--forest); }
+  .btn-outline:hover { background: var(--mint); }
+  .btn-wa { background: var(--wa); color: var(--white); box-shadow: 0 8px 20px rgba(30,142,78,.25); }
+  .btn-wa:hover { background: #17753F; }
+  .btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+  .btn-block { width: 100%; }
+  .btn svg { width: 22px; height: 22px; flex-shrink: 0; }
+
+  /* Header */
+  .site-header { position: sticky; top: 0; z-index: 50; background: rgba(250,248,242,.96); border-bottom: 1px solid var(--line); }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 64px; }
+  .wordmark {
+    font-family: Georgia, "Times New Roman", serif; font-size: 1.45rem; font-weight: 700;
+    color: var(--forest); text-decoration: none; letter-spacing: .02em; white-space: nowrap;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .wordmark .leaf { width: 22px; height: 22px; flex-shrink: 0; }
+  .header-nav { display: none; gap: 22px; }
+  .header-nav a { color: var(--ink); text-decoration: none; font-size: .95rem; font-weight: 600; }
+  .header-nav a:hover { color: var(--forest); text-decoration: underline; text-underline-offset: 4px; }
+  .header-cta { min-height: 44px; padding: 10px 18px; font-size: .92rem; }
+
+  /* Hero */
+  .hero { padding: 40px 0 56px; }
+  .hero-grid { display: grid; gap: 36px; align-items: center; }
+  .eyebrow {
+    display: inline-block; font-size: .8rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--sage-dark); background: var(--mint);
+    padding: 6px 12px; border-radius: 999px; margin-bottom: 18px;
+  }
+  .hero-lead { font-size: 1.08rem; color: var(--muted); margin-bottom: 26px; max-width: 540px; }
+  .hero-actions { display: flex; flex-direction: column; gap: 12px; }
+  .micro { font-size: .92rem; color: var(--muted); margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px 16px; }
+  .micro span::before { content: "✓ "; color: var(--sage-dark); font-weight: 700; }
+  .hero-art { display: flex; justify-content: center; }
+  .hero-art svg { width: min(360px, 100%); height: auto; }
+
+  /* Benefits */
+  .benefits { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .benefit-grid { display: grid; gap: 16px; margin-top: 28px; }
+  .benefit {
+    background: var(--ivory); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 24px; box-shadow: var(--shadow); transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .benefit:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+  .benefit-icon { width: 46px; height: 46px; border-radius: 14px; background: var(--mint); display: grid; place-items: center; margin-bottom: 14px; }
+  .benefit-icon svg { width: 24px; height: 24px; }
+  .benefit p { color: var(--ink); font-weight: 600; }
+  .section-lead { color: var(--muted); max-width: 620px; }
+
+  /* Quiz */
+  .quiz-section { background: var(--ivory); }
+  .quiz-card {
+    background: var(--white); border-radius: 24px; box-shadow: var(--shadow);
+    border: 1px solid var(--line); padding: 28px 22px; max-width: 720px; margin: 0 auto;
+  }
+  .quiz-intro { text-align: center; }
+  .quiz-intro p { color: var(--muted); margin: 10px auto 22px; max-width: 480px; }
+  .quiz-meta { display: flex; justify-content: space-between; align-items: center; font-size: .9rem; color: var(--muted); font-weight: 600; margin-bottom: 10px; }
+  .progress { height: 10px; background: var(--mint); border-radius: 999px; overflow: hidden; margin-bottom: 26px; }
+  .progress-bar {
+    height: 100%; width: 0%; background: linear-gradient(90deg, var(--sage), var(--forest));
+    border-radius: 999px; transition: width .45s ease;
+  }
+  .step { transition: opacity .3s ease, transform .3s ease; }
+  .step.is-leaving { opacity: 0; transform: translateX(-12px); }
+  .step.is-entering { opacity: 0; transform: translateX(12px); }
+  .question-title { font-size: clamp(1.25rem, 4vw, 1.6rem); margin-bottom: 20px; }
+  .options { display: grid; gap: 12px; }
+  .option {
+    width: 100%; text-align: left; display: flex; align-items: center; gap: 14px;
+    min-height: 58px; padding: 14px 16px; background: var(--white); color: var(--ink);
+    border: 2px solid var(--line); border-radius: 16px; font-size: 1rem; line-height: 1.4;
+    transition: border-color .2s ease, background-color .2s ease, box-shadow .2s ease, transform .15s ease;
+  }
+  .option:hover { border-color: var(--sage); background: var(--ivory); }
+  .option:active { transform: scale(.99); }
+  .option .radio {
+    flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+    border: 2px solid var(--sage); display: grid; place-items: center; transition: all .2s ease;
+  }
+  .option .radio svg { width: 14px; height: 14px; opacity: 0; transition: opacity .2s ease; }
+  .option .opt-text { flex: 1; }
+  .option[aria-pressed="true"] { border-color: var(--forest); background: var(--mint); box-shadow: inset 0 0 0 1px var(--forest); font-weight: 600; }
+  .option[aria-pressed="true"] .radio { background: var(--forest); border-color: var(--forest); color: var(--white); }
+  .option[aria-pressed="true"] .radio svg { opacity: 1; }
+  .option[aria-pressed="true"] .sel-tag {
+    font-size: .78rem; font-weight: 700; color: var(--forest);
+    background: var(--white); padding: 3px 10px; border-radius: 999px; white-space: nowrap;
+  }
+  .form-error { min-height: 24px; margin-top: 14px; color: #9A3B2E; font-weight: 600; font-size: .95rem; }
+  .quiz-nav { display: flex; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+  .quiz-nav .btn-outline { flex: 1 1 140px; }
+  .quiz-nav .btn-primary { flex: 2 1 180px; }
+  .reassure { text-align: center; font-size: .9rem; color: var(--muted); margin-top: 16px; }
+
+  /* Results */
+  .result-kicker { font-size: .82rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--sage-dark); margin-bottom: 8px; }
+  .result-heading { font-size: clamp(1.5rem, 5vw, 2rem); margin-bottom: 14px; outline: none; }
+  .result-explain { background: var(--mint); border-radius: 16px; padding: 18px 20px; margin-bottom: 22px; }
+  .result-explain strong { color: var(--forest); }
+  .tips { list-style: none; display: grid; gap: 12px; margin: 14px 0 26px; }
+  .tips li { position: relative; padding-left: 36px; }
+  .tips li::before {
+    content: ""; position: absolute; left: 0; top: 4px; width: 22px; height: 22px; border-radius: 50%;
+    background: var(--mint) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23214D3A' stroke-width='3'><path d='M5 12l5 5 9-10'/></svg>") center/14px no-repeat;
+  }
+  .result-ebook { border: 1px dashed var(--sage); border-radius: 16px; padding: 18px; margin-bottom: 22px; background: var(--ivory); }
+  .result-actions { display: flex; flex-direction: column; gap: 12px; }
+  .disclaimer {
+    font-size: .85rem; color: var(--muted); border-left: 3px solid var(--sage);
+    padding: 10px 14px; margin-top: 22px; background: var(--white); border-radius: 0 10px 10px 0;
+  }
+
+  /* Ebook */
+  .ebook-grid { display: grid; gap: 36px; align-items: center; }
+  .ebook-price { font-size: 2rem; font-weight: 800; color: var(--forest); margin: 10px 0 6px; }
+  .ebook-list { list-style: none; margin: 18px 0 24px; display: grid; gap: 10px; }
+  .ebook-list li { padding-left: 30px; position: relative; }
+  .ebook-list li::before { content: "✓"; position: absolute; left: 0; color: var(--sage-dark); font-weight: 800; }
+  .ebook-note { font-size: .92rem; color: var(--muted); margin-top: 14px; }
+  .book-wrap { display: flex; justify-content: center; perspective: 900px; }
+  .book {
+    width: min(260px, 72vw); aspect-ratio: 3 / 4; border-radius: 6px 14px 14px 6px;
+    background: linear-gradient(160deg, #2F6248 0%, var(--forest) 45%, var(--forest-dark) 100%);
+    box-shadow: -10px 14px 0 -2px #173628, 0 24px 40px rgba(23,54,40,.35);
+    position: relative; padding: 26px 22px; color: var(--ivory);
+    display: flex; flex-direction: column; justify-content: space-between;
+    transform: rotateY(-8deg); transition: transform .4s ease; overflow: hidden;
+  }
+  .book:hover { transform: rotateY(-3deg) translateY(-4px); }
+  .book::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 10px;
+    background: linear-gradient(90deg, rgba(0,0,0,.25), rgba(255,255,255,.08));
+  }
+  .book-brand { font-family: Georgia, serif; font-size: 1.1rem; letter-spacing: .08em; opacity: .9; }
+  .book-leaf { position: absolute; right: -30px; bottom: -30px; width: 170px; opacity: .14; }
+  .book-title { font-family: Georgia, serif; font-size: 1.55rem; line-height: 1.15; color: var(--white); }
+  .book-sub { font-size: .8rem; text-transform: uppercase; letter-spacing: .14em; color: var(--mint); margin-top: 10px; }
+  .book-foot { font-size: .75rem; color: var(--sage); border-top: 1px solid rgba(232,239,229,.3); padding-top: 10px; }
+  .ebook-card { background: var(--white); border: 1px solid var(--line); border-radius: 24px; padding: 28px 22px; box-shadow: var(--shadow); }
+  .ebook-card .product-desc { color: var(--muted); }
+  .ebook-secure { font-size: .9rem; color: var(--muted); margin-top: 12px; text-align: center; }
+
+  /* FAQ */
+  .faq { background: var(--white); border-top: 1px solid var(--line); }
+  .faq-list { max-width: 760px; margin: 28px auto 0; display: grid; gap: 12px; }
+  .faq-item { border: 1px solid var(--line); border-radius: 16px; background: var(--ivory); overflow: hidden; }
+  .faq-q {
+    width: 100%; background: none; border: 0; text-align: left; padding: 18px 20px;
+    font-size: 1.02rem; font-weight: 700; color: var(--ink); display: flex; justify-content: space-between;
+    align-items: center; gap: 14px; min-height: 58px;
+  }
+  .faq-q:hover { color: var(--forest); }
+  .faq-icon {
+    flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--mint);
+    display: grid; place-items: center; transition: transform .3s ease;
+  }
+  .faq-icon svg { width: 14px; height: 14px; }
+  .faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+  .faq-a-inner { padding: 0 20px 18px; color: var(--muted); }
+
+  /* Footer */
+  .site-footer { background: var(--forest-dark); color: var(--mint); padding: 48px 0 28px; }
+  .site-footer .wordmark { color: var(--white); }
+  .site-footer p { color: var(--sage); font-size: .95rem; margin-top: 10px; max-width: 460px; }
+  .footer-grid { display: grid; gap: 24px; }
+  .footer-wa {
+    display: inline-flex; align-items: center; gap: 10px; margin-top: 14px; color: var(--white);
+    text-decoration: none; font-weight: 700; padding: 10px 16px; border-radius: 999px;
+    border: 1px solid rgba(232,239,229,.4); min-height: 44px;
+  }
+  .footer-wa:hover { background: rgba(255,255,255,.08); }
+  .footer-wa svg { width: 20px; height: 20px; }
+  .footer-disclaimer { font-size: .85rem; color: var(--sage); }
+  .copy { font-size: .85rem; color: var(--sage); margin-top: 24px; border-top: 1px solid rgba(232,239,229,.15); padding-top: 18px; }
+
+  /* Sticky mobile CTA */
+  .mobile-sticky {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(250,248,242,.96); border-top: 1px solid var(--line);
+    transform: translateY(110%); transition: transform .3s ease;
+  }
+  .mobile-sticky.show { transform: translateY(0); }
+  .mobile-sticky .btn { width: 100%; min-height: 50px; }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  /* Breakpoints */
+  @media (max-width: 359px) {
+    .container { padding: 0 14px; }
+    .quiz-card { padding: 22px 14px; border-radius: 20px; }
+    .option { font-size: .95rem; padding: 12px; }
+    .option[aria-pressed="true"] .sel-tag { display: none; }
+    .wordmark { font-size: 1.25rem; }
+    .header-cta { padding: 10px 12px; font-size: .85rem; }
+  }
+  @media (min-width: 640px) {
+    .hero-actions { flex-direction: row; flex-wrap: wrap; align-items: center; }
+    .hero-actions .btn { width: auto; }
+    .result-actions { flex-direction: row; flex-wrap: wrap; }
+    .result-actions .btn { flex: 1 1 200px; }
+    .benefit-grid { grid-template-columns: repeat(3, 1fr); }
+    .footer-grid { grid-template-columns: 2fr 1fr; align-items: start; }
+  }
+  @media (min-width: 768px) {
+    section { padding: 72px 0; }
+    .header-nav { display: flex; }
+    .hero-grid { grid-template-columns: 1.1fr .9fr; }
+    .ebook-grid { grid-template-columns: .9fr 1.1fr; }
+    .quiz-card { padding: 40px 36px; }
+    .mobile-sticky { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#teste" class="skip-link">Saltar para o teste</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#inicio" class="wordmark" aria-label="Claripele, início">
+      <svg class="leaf" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20C4 11 9 5 20 4c0 11-6 16-15 16z" fill="#9CAF96"/><path d="M4 20l9-9" stroke="#214D3A" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+      Claripele
+    </a>
+    <nav class="header-nav" aria-label="Navegação principal">
+      <a href="#beneficios">Benefícios</a>
+      <a href="#teste">Teste</a>
+      <a href="#guia">O guia</a>
+      <a href="#perguntas">Perguntas</a>
+    </nav>
+    <a href="#teste" class="btn btn-primary header-cta" data-start-quiz>Fazer o teste</a>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Teste gratuito</span>
+        <h1>A tua rotina de cuidados com a pele está a ajudar-te ou a deixar-te com mais dúvidas?</h1>
+        <p class="hero-lead">Responde a algumas perguntas rápidas e descobre quais informações podem ajudar-te a compreender melhor a tua pele e a organizar os teus cuidados.</p>
+        <div class="hero-actions">
+          <button type="button" class="btn btn-primary" data-start-quiz>FAZER O TESTE GRATUITO</button>
+        </div>
+        <div class="micro">
+          <span>Rápido, simples e sem compromisso.</span>
+          <span>Sem registo nem email.</span>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 360 340" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="180" cy="170" r="150" fill="#E8EFE5"/>
+          <circle cx="180" cy="170" r="110" fill="#FAF8F2"/>
+          <path d="M180 260 C 120 240, 110 170, 140 120 C 160 90, 200 90, 220 120 C 250 170, 240 240, 180 260 Z" fill="#9CAF96" opacity=".55"/>
+          <path d="M180 260 V 130" stroke="#214D3A" stroke-width="3" stroke-linecap="round"/>
+          <path d="M180 200 C 160 190, 146 176, 140 160" stroke="#214D3A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M180 170 C 200 160, 214 146, 220 130" stroke="#214D3A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <circle cx="262" cy="92" r="8" fill="#214D3A" opacity=".8"/>
+          <circle cx="98" cy="232" r="5" fill="#214D3A" opacity=".5"/>
+          <circle cx="278" cy="232" r="6" fill="#9CAF96"/>
+          <circle cx="120" cy="96" r="4" fill="#9CAF96"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="benefits" id="beneficios">
+    <div class="container">
+      <h2 class="reveal">O que podes descobrir</h2>
+      <p class="section-lead reveal">Um percurso curto que te ajuda a olhar para os teus cuidados com mais clareza.</p>
+      <div class="benefit-grid">
+        <article class="benefit reveal">
+          <div class="benefit-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#214D3A" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          </div>
+          <p>Compreender melhor as tuas necessidades de cuidados com a pele.</p>
+        </article>
+        <article class="benefit reveal">
+          <div class="benefit-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#214D3A" stroke-width="2" stroke-linecap="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg>
+          </div>
+          <p>Identificar hábitos e dúvidas que merecem mais atenção.</p>
+        </article>
+        <article class="benefit reveal">
+          <div class="benefit-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#214D3A" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 10h18M8 2v4M16 2v4"/></svg>
+          </div>
+          <p>Descobrir como organizar uma rotina mais simples e informada.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz -->
+  <section class="quiz-section" id="teste">
+    <div class="container">
+      <div class="quiz-card" id="quizCard">
+
+        <div id="quizIntro" class="quiz-intro">
+          <span class="eyebrow">6 perguntas</span>
+          <h2>Vamos perceber por onde começar</h2>
+          <p>Escolhe a opção que mais se aproxima da tua situação. Não há respostas certas ou erradas.</p>
+          <button type="button" class="btn btn-primary" id="startBtn">Começar o teste</button>
+          <p class="reassure">Não pedimos nome, contacto nem fotografias.</p>
+        </div>
+
+        <div id="quizQuestions" hidden>
+          <div class="quiz-meta">
+            <span id="stepLabel">Pergunta 1 de 6</span>
+            <span id="stepPercent">17%</span>
+          </div>
+          <div class="progress" role="progressbar" aria-label="Progresso do teste" aria-valuemin="0" aria-valuemax="100" aria-valuenow="17" id="progressTrack">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+          <div class="step" id="stepContainer">
+            <h2 class="question-title" id="questionTitle" tabindex="-1"></h2>
+            <div class="options" id="optionsList" role="group" aria-labelledby="questionTitle"></div>
+            <p class="form-error" id="formError" role="alert" aria-live="assertive"></p>
+          </div>
+          <div class="quiz-nav">
+            <button type="button" class="btn btn-outline" id="backBtn">Voltar</button>
+            <button type="button" class="btn btn-primary" id="nextBtn">Continuar</button>
+          </div>
+        </div>
+
+        <div id="quizResult" hidden>
+          <p class="result-kicker" id="resultKicker">O teu resultado</p>
+          <h2 class="result-heading" id="resultHeading" tabindex="-1"></h2>
+          <div class="result-explain" id="resultExplain"></div>
+          <h3>Três ideias para começares</h3>
+          <ul class="tips" id="resultTips"></ul>
+          <div class="result-ebook">
+            <h3>O Guia Claripele pode ajudar-te a aprofundar</h3>
+            <p id="resultEbookText"></p>
+          </div>
+          <div class="result-actions">
+            <a href="#" class="btn btn-wa" data-wa>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.5.8 3.2 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+              Quero o meu guia — 1.999 Kz
+            </a>
+            <button type="button" class="btn btn-outline" id="restartBtn">Refazer o teste</button>
+          </div>
+          <p class="disclaimer">Este teste tem fins educativos e não constitui um diagnóstico médico. A acne pode ter diferentes causas. Se for persistente, dolorosa ou deixar cicatrizes, considera procurar orientação de um profissional de saúde.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Ebook -->
+  <section class="guia" id="guia">
+    <div class="container ebook-grid">
+      <div class="book-wrap reveal">
+        <div class="book" role="img" aria-label="Capa conceptual do Guia Prático de Cuidados com a Pele e Acne, Claripele">
+          <svg class="book-leaf" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20C4 11 9 5 20 4c0 11-6 16-15 16z" fill="#E8EFE5"/></svg>
+          <div class="book-brand">Claripele</div>
+          <div>
+            <div class="book-title">Guia Prático de Cuidados com a Pele e Acne</div>
+            <div class="book-sub">Edição digital</div>
+          </div>
+          <div class="book-foot">Informação educativa para uma rotina mais informada</div>
+        </div>
+      </div>
+      <div class="ebook-card reveal">
+        <span class="eyebrow">Próximo passo</span>
+        <h2>Guia Prático de Cuidados com a Pele e Acne — Claripele</h2>
+        <p class="product-desc">Um guia educativo para compreender melhor os cuidados com a pele, conhecer erros comuns e aprender a organizar uma rotina básica de forma mais informada.</p>
+        <ul class="ebook-list">
+          <li>Informação sobre acne e fatores que podem influenciar a pele.</li>
+          <li>Noções para organizar uma rotina básica.</li>
+          <li>Erros comuns nos cuidados com a pele.</li>
+          <li>Orientação para escolher produtos com mais informação.</li>
+        </ul>
+        <p class="ebook-price">1.999 Kz</p>
+        <a href="#" class="btn btn-wa btn-block" data-wa>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.5.8 3.2 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+          QUERO O MEU GUIA — 1.999 Kz
+        </a>
+        <p class="ebook-secure">Fala connosco pelo WhatsApp para receber as informações sobre a compra.</p>
+        <p class="ebook-note">O site não recolhe pagamentos. O pagamento e a entrega são combinados diretamente pelo WhatsApp.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="perguntas">
+    <div class="container">
+      <h2 class="reveal" style="text-align:center;">Perguntas frequentes</h2>
+      <div class="faq-list" id="faqList"></div>
+      <p class="disclaimer" style="max-width:760px;margin-left:auto;margin-right:auto;">Este teste tem fins educativos e não constitui um diagnóstico médico. A acne pode ter diferentes causas. Se for persistente, dolorosa ou deixar cicatrizes, considera procurar orientação de um profissional de saúde.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a href="#inicio" class="wordmark">
+        <svg class="leaf" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20C4 11 9 5 20 4c0 11-6 16-15 16z" fill="#9CAF96"/></svg>
+        Claripele
+      </a>
+      <p>Informação educativa sobre cuidados com a pele, para uma rotina mais simples e mais informada.</p>
+      <a href="#" class="footer-wa" data-wa>
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.5.8 3.2 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+        Falar no WhatsApp
+      </a>
+    </div>
+    <div>
+      <p class="footer-disclaimer">Este teste tem fins educativos e não constitui um diagnóstico médico. Em caso de acne persistente, dolorosa ou com cicatrizes, procura orientação de um profissional de saúde.</p>
+    </div>
+  </div>
+  <div class="container">
+    <p class="copy">© <span id="year"></span> Claripele. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<div class="mobile-sticky" id="mobileSticky">
+  <a href="#" class="btn btn-wa" data-wa>Quero o meu guia — 1.999 Kz</a>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- WhatsApp ---------- */
+  var WA_NUMBER = "244950671497";
+  var WA_MESSAGE = "Olá, Claripele! Fiz o teste e gostaria de saber como posso adquirir o Guia Prático de Cuidados com a Pele e Acne por 1.999 Kz.";
+  var WA_URL = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(WA_MESSAGE);
+
+  document.querySelectorAll("[data-wa]").forEach(function (a) {
+    a.setAttribute("href", WA_URL);
+    a.setAttribute("target", "_blank");
+    a.setAttribute("rel", "noopener noreferrer");
+  });
+
+  /* ---------- Year ---------- */
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* ---------- Quiz data ---------- */
+  // Temas: simple (rotina mais simples), produtos, organizar, acne.
+  // Desempate previsível: acne > simple > produtos > organizar.
+  var THEME_ORDER = ["acne", "simple", "produtos", "organizar"];
+
+  var QUESTIONS = [
+    {
+      title: "Qual é a tua maior preocupação neste momento?",
+      options: [
+        { text: "Tenho borbulhas e acne frequentes.", w: { acne: 2 } },
+        { text: "Fico com marcas depois das borbulhas.", w: { acne: 2 } },
+        { text: "A minha pele é muito oleosa.", w: { produtos: 1, acne: 1 } },
+        { text: "A minha pele é sensível ou irrita-se facilmente.", w: { produtos: 2 } },
+        { text: "Tenho várias destas preocupações.", w: { acne: 1, organizar: 1 } }
+      ]
+    },
+    {
+      title: "O que mais te incomoda nos cuidados com a tua pele?",
+      options: [
+        { text: "Não sei quais produtos escolher.", w: { produtos: 2 } },
+        { text: "Já experimentei várias coisas e continuo com dúvidas.", w: { produtos: 1, organizar: 1 } },
+        { text: "Não sei qual deve ser a ordem da minha rotina.", w: { organizar: 2 } },
+        { text: "Tenho receio de usar produtos que irritem a minha pele.", w: { produtos: 2 } },
+        { text: "Não consigo manter uma rotina simples.", w: { simple: 2 } }
+      ]
+    },
+    {
+      title: "Já tentaste alguma forma de cuidar da tua pele?",
+      options: [
+        { text: "Sim, experimentei vários produtos.", w: { produtos: 2 } },
+        { text: "Sim, mas não consegui manter uma rotina.", w: { simple: 2 } },
+        { text: "Apenas uso alguns produtos básicos.", w: { simple: 1 } },
+        { text: "Ainda não sei por onde começar.", w: { organizar: 2 } }
+      ]
+    },
+    {
+      title: "Como descreverias a tua rotina atual?",
+      options: [
+        { text: "Tenho uma rotina organizada.", w: { acne: 1, produtos: 1 } },
+        { text: "Uso produtos de vez em quando.", w: { simple: 2 } },
+        { text: "Lavo o rosto, mas não tenho uma rotina definida.", w: { organizar: 1, simple: 1 } },
+        { text: "Ainda não tenho uma rotina.", w: { organizar: 2 } }
+      ]
+    },
+    {
+      title: "Que tipo de informação gostarias de encontrar num guia?",
+      options: [
+        { text: "Compreender melhor a acne e os fatores que podem influenciar a pele.", w: { acne: 2 } },
+        { text: "Aprender a organizar uma rotina básica.", w: { organizar: 2 } },
+        { text: "Conhecer erros comuns nos cuidados com a pele.", w: { organizar: 1, produtos: 1 } },
+        { text: "Aprender a escolher produtos com mais informação.", w: { produtos: 2 } },
+        { text: "Um pouco de tudo isso.", w: { acne: 1, organizar: 1, produtos: 1 } }
+      ]
+    },
+    {
+      title: "Qual destas opções combina mais contigo?",
+      options: [
+        { text: "Quero começar com cuidados simples e acessíveis.", w: { simple: 2 } },
+        { text: "Quero compreender melhor os produtos que utilizo.", w: { produtos: 2 } },
+        { text: "Quero organizar os meus cuidados e evitar erros comuns.", w: { organizar: 2 } },
+        { text: "Quero aprender antes de tomar novas decisões sobre a minha pele.", w: { acne: 2 } }
+      ]
+    }
+  ];
+
+  var RESULTS = {
+    simple: {
+      kicker: "Rotina",
+      heading: "Precisas de uma rotina mais simples",
+      explain: function (a) {
+        return "Pelas respostas que escolheste, o que mais pesa agora é manter os cuidados sem complicação. Uma rotina curta e constante costuma ser mais fácil de manter do que muitos passos ao mesmo tempo.";
+      },
+      tips: [
+        "Começa com três passos essenciais: limpeza, hidratação e protetor solar durante o dia.",
+        "Escolhe horários fixos, como de manhã e à noite, para criares um hábito estável.",
+        "Evita trocar de produto todas as semanas; dá tempo à pele para te mostrar como reage."
+      ],
+      ebook: "O guia explica, de forma prática, como montar uma rotina básica e realista, sem excesso de passos."
+    },
+    produtos: {
+      kicker: "Produtos",
+      heading: "Precisas de compreender melhor os produtos",
+      explain: function (a) {
+        return "Pelas respostas que escolheste, tens dúvidas sobre o que usar e porquê. Quando não se sabe o que cada produto faz, é normal sentir-se perdido entre tantas opções.";
+      },
+      tips: [
+        "Lê a lista de ingredientes e repara se o produto indica para que tipo de pele foi pensado.",
+        "Experimenta um produto de cada vez, para perceberes o que te faz bem ou mal.",
+        "Se a pele reagir com ardor, vermelhidão ou comichão persistente, suspende o uso e procura orientação."
+      ],
+      ebook: "O guia ajuda-te a perceber como escolher produtos com mais informação e a fazer as perguntas certas antes de comprar."
+    },
+    organizar: {
+      kicker: "Organização",
+      heading: "Precisas de organizar os teus cuidados",
+      explain: function (a) {
+        return "Pelas respostas que escolheste, tens vontade de cuidar melhor da pele, mas ainda falta uma estrutura clara. Organizar a ordem dos passos já pode trazer mais tranquilidade.";
+      },
+      tips: [
+        "Pensa na ordem geral: limpar, tratar e proteger, sempre do produto mais leve para o mais denso.",
+        "Anota durante uma semana o que usas e quando, para identificares padrões.",
+        "Evita acumular muitos produtos novos ao mesmo tempo, porque torna difícil perceber o efeito de cada um."
+      ],
+      ebook: "O guia apresenta uma forma organizada de estruturar a tua rotina e de evitar erros comuns logo no início."
+    },
+    acne: {
+      kicker: "Acne",
+      heading: "Estás à procura de informação mais clara sobre acne",
+      explain: function (a) {
+        return "Pelas respostas que escolheste, queres perceber melhor a acne e o que pode estar por trás dela. Informação clara ajuda-te a fazer perguntas melhores, a um profissional ou a ti mesmo.";
+      },
+      tips: [
+        "Procura fontes que expliquem causas e fatores, e não apenas promessas de resultados rápidos.",
+        "Observa se há fatores do dia a dia que parecem coincidir com as fases em que a pele piora, sem tirar conclusões precipitadas.",
+        "Se a acne for persistente, dolorosa ou deixar cicatrizes, procura um profissional de saúde."
+      ],
+      ebook: "O guia explica os fatores que podem influenciar a pele e a acne, em linguagem simples e sem promessas de cura."
+    }
+  };
+
+  /* ---------- FAQ ---------- */
+  var FAQS = [
+    { q: "O que é o guia Claripele?", a: "É um guia digital educativo sobre cuidados com a pele, acne e hábitos que podem ajudar-te a organizar melhor a tua rotina de cuidados." },
+    { q: "O guia garante que a acne vai desaparecer?", a: "Não. O guia disponibiliza informação educativa, mas não garante resultados médicos nem substitui a avaliação de um profissional de saúde." },
+    { q: "Quanto custa o guia?", a: "O preço é 1.999 Kz." },
+    { q: "Como posso comprar?", a: "Clica num dos botões de WhatsApp para falar connosco e combinar o pagamento." },
+    { q: "Como recebo o guia?", a: "Fala connosco pelo WhatsApp para confirmar as condições de pagamento e receber informações sobre a entrega." }
+  ];
+
+  var faqList = document.getElementById("faqList");
+  FAQS.forEach(function (item, i) {
+    var wrap = document.createElement("div");
+    wrap.className = "faq-item";
+
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "faq-q";
+    btn.id = "faq-q-" + i;
+    btn.setAttribute("aria-expanded", "false");
+    btn.setAttribute("aria-controls", "faq-a-" + i);
+
+    var label = document.createElement("span");
+    label.textContent = item.q;
+    var icon = document.createElement("span");
+    icon.className = "faq-icon";
+    icon.setAttribute("aria-hidden", "true");
+    icon.innerHTML = '<svg viewBox="0 0 14 14" fill="none" stroke="#214D3A" stroke-width="2" stroke-linecap="round"><path d="M7 1v12M1 7h12"/></svg>';
+    btn.appendChild(label);
+    btn.appendChild(icon);
+
+    var panel = document.createElement("div");
+    panel.className = "faq-a";
+    panel.id = "faq-a-" + i;
+    panel.setAttribute("role", "region");
+    panel.setAttribute("aria-labelledby", "faq-q-" + i);
+    var inner = document.createElement("div");
+    inner.className = "faq-a-inner";
+    inner.textContent = item.a;
+    panel.appendChild(inner);
+
+    btn.addEventListener("click", function () {
+      var open = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!open));
+      panel.style.maxHeight = open ? "0px" : panel.scrollHeight + "px";
+    });
+
+    wrap.appendChild(btn);
+    wrap.appendChild(panel);
+    faqList.appendChild(wrap);
+  });
+
+  /* ---------- Quiz state ---------- */
+  var answers = new Array(QUESTIONS.length).fill(null);
+  var current = 0;
+  var busy = false;
+
+  var el = {
+    intro: document.getElementById("quizIntro"),
+    questions: document.getElementById("quizQuestions"),
+    result: document.getElementById("quizResult"),
+    stepLabel: document.getElementById("stepLabel"),
+    stepPercent: document.getElementById("stepPercent"),
+    progressBar: document.getElementById("progressBar"),
+    progressTrack: document.getElementById("progressTrack"),
+    stepContainer: document.getElementById("stepContainer"),
+    title: document.getElementById("questionTitle"),
+    options: document.getElementById("optionsList"),
+    error: document.getElementById("formError"),
+    back: document.getElementById("backBtn"),
+    next: document.getElementById("nextBtn"),
+    start: document.getElementById("startBtn"),
+    restart: document.getElementById("restartBtn"),
+    resultHeading: document.getElementById("resultHeading"),
+    resultKicker: document.getElementById("resultKicker"),
+    resultExplain: document.getElementById("resultExplain"),
+    resultTips: document.getElementById("resultTips"),
+    resultEbook: document.getElementById("resultEbookText"),
+    card: document.getElementById("quizCard"),
+    mobileSticky: document.getElementById("mobileSticky")
+  };
+
+  var CHECK_SVG = '<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7"/></svg>';
+
+  function renderStep() {
+    var q = QUESTIONS[current];
+    el.stepLabel.textContent = "Pergunta " + (current + 1) + " de " + QUESTIONS.length;
+    var pct = Math.round(((current + 1) / QUESTIONS.length) * 100);
+    el.stepPercent.textContent = pct + "%";
+    el.progressBar.style.width = pct + "%";
+    el.progressTrack.setAttribute("aria-valuenow", String(pct));
+    el.title.textContent = q.title;
+    el.error.textContent = "";
+    el.options.innerHTML = "";
+
+    q.options.forEach(function (opt, i) {
+      var selected = answers[current] === i;
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "option";
+      b.setAttribute("aria-pressed", selected ? "true" : "false");
+
+      var radio = document.createElement("span");
+      radio.className = "radio";
+      radio.innerHTML = CHECK_SVG;
+      var text = document.createElement("span");
+      text.className = "opt-text";
+      text.textContent = opt.text;
+      var tag = document.createElement("span");
+      tag.className = "sel-tag";
+      tag.textContent = "Selecionado";
+
+      b.appendChild(radio);
+      b.appendChild(text);
+      b.appendChild(tag);
+      b.addEventListener("click", function () { selectOption(i); });
+      el.options.appendChild(b);
+    });
+
+    el.back.disabled = current === 0;
+    el.next.textContent = current === QUESTIONS.length - 1 ? "Ver o meu resultado" : "Continuar";
+  }
+
+  function selectOption(i) {
+    answers[current] = i;
+    el.options.querySelectorAll(".option").forEach(function (b, idx) {
+      b.setAttribute("aria-pressed", idx === i ? "true" : "false");
+    });
+    el.error.textContent = "";
+  }
+
+  function animateStep(direction, callback) {
+    if (busy) return;
+    busy = true;
+    var c = el.stepContainer;
+    c.classList.add(direction === "next" ? "is-leaving" : "is-leaving");
+    setTimeout(function () {
+      callback();
+      c.classList.remove("is-leaving");
+      c.classList.add("is-entering");
+      void c.offsetWidth;
+      c.classList.remove("is-entering");
+      el.title.focus({ preventScroll: true });
+      busy = false;
+    }, 180);
+  }
+
+  function goNext() {
+    if (busy) return;
+    if (answers[current] === null) {
+      el.error.textContent = "Escolhe uma opção para continuar.";
+      el.options.querySelector(".option").focus();
+      return;
+    }
+    if (current === QUESTIONS.length - 1) {
+      showResult();
+      return;
+    }
+    animateStep("next", function () { current++; renderStep(); });
+  }
+
+  function goBack() {
+    if (current === 0 || busy) return;
+    animateStep("back", function () { current--; renderStep(); });
+  }
+
+  function calculateTheme() {
+    var scores = { acne: 0, simple: 0, produtos: 0, organizar: 0 };
+    answers.forEach(function (ansIdx, qIdx) {
+      var w = QUESTIONS[qIdx].options[ansIdx].w;
+      Object.keys(w).forEach(function (k) { scores[k] += w[k]; });
+    });
+    var best = THEME_ORDER[0];
+    THEME_ORDER.forEach(function (t) {
+      if (scores[t] > scores[best]) best = t;
+    });
+    return best;
+  }
+
+  function showResult() {
+    var theme = calculateTheme();
+    var r = RESULTS[theme];
+    el.questions.hidden = true;
+    el.result.hidden = false;
+    el.mobileSticky.classList.remove("show");
+    el.resultKicker.textContent = r.kicker;
+    el.resultHeading.textContent = r.heading;
+    el.resultExplain.textContent = r.explain(answers);
+    el.resultTips.innerHTML = "";
+    r.tips.forEach(function (t) {
+      var li = document.createElement("li");
+      li.textContent = t;
+      el.resultTips.appendChild(li);
+    });
+    el.resultEbook.textContent = r.ebook + " Podes falar connosco pelo WhatsApp para saber como adquiri-lo.";
+    el.card.scrollIntoView({ behavior: "smooth", block: "start" });
+    setTimeout(function () { el.resultHeading.focus({ preventScroll: true }); }, 350);
+  }
+
+  function startQuiz() {
+    el.intro.hidden = true;
+    el.result.hidden = true;
+    el.questions.hidden = false;
+    current = 0;
+    renderStep();
+    el.card.scrollIntoView({ behavior: "smooth", block: "start" });
+    setTimeout(function () { el.title.focus({ preventScroll: true }); }, 350);
+  }
+
+  function restartQuiz() {
+    answers = new Array(QUESTIONS.length).fill(null);
+    current = 0;
+    el.result.hidden = true;
+    el.questions.hidden = true;
+    el.intro.hidden = false;
+    el.card.scrollIntoView({ behavior: "smooth", block: "start" });
+    setTimeout(function () { el.start.focus({ preventScroll: true }); }, 350);
+  }
+
+  el.start.addEventListener("click", startQuiz);
+  el.next.addEventListener("click", goNext);
+  el.back.addEventListener("click", goBack);
+  el.restart.addEventListener("click", restartQuiz);
+
+  document.querySelectorAll("[data-start-quiz]").forEach(function (b) {
+    b.addEventListener("click", function (e) {
+      e.preventDefault();
+      document.getElementById("teste").scrollIntoView({ behavior: "smooth", block: "start" });
+      setTimeout(startQuiz, 400);
+    });
+  });
+
+  /* ---------- Reveal on scroll ---------- */
+  var reveals = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add("visible");
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(function (r) { io.observe(r); });
+  } else {
+    reveals.forEach(function (r) { r.classList.add("visible"); });
+  }
+
+  /* ---------- Sticky mobile CTA ---------- */
+  var ebookSection = document.getElementById("guia");
+  window.addEventListener("scroll", function () {
+    var rect = ebookSection.getBoundingClientRect();
+    var pastEbook = rect.bottom < 0 || rect.top > window.innerHeight;
+    var inQuiz = !el.questions.hidden || !el.result.hidden;
+    var show = window.innerWidth < 768 && !pastEbook && !inQuiz && window.scrollY > 500;
+    el.mobileSticky.classList.toggle("show", show);
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>
